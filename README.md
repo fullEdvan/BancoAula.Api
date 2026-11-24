@@ -34,6 +34,8 @@ Antes de começar, certifique-se de ter os seguintes itens instalados na sua má
 ## 📌 Funcionalidades e Endpoints
 (Será documentado conforme a implementação de cada feature.)
 
+- `GET /api/contas` — Verifica se a API está no ar (retorna `200 OK`).
+
 ## 📝 Licença
 
 MIT License - código livre para aproveitar, e deixa uma ⭐️ no repositório, se ele lhe ajudar! ✌️
