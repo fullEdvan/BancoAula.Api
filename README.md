@@ -34,7 +34,8 @@ Antes de começar, certifique-se de ter os seguintes itens instalados na sua má
 ## 📌 Funcionalidades e Endpoints
 (Será documentado conforme a implementação de cada feature.)
 
-- `GET /api/contas` — Verifica se a API está no ar (retorna `200 OK`).
+- ~~`GET /api/contas` — Verifica se a API está no ar (retorna `200 OK`).~~
+- `GET /api/contas` — Retorna uma lista inicial de contas fictícias em formato JSON (`200 OK`).
 
 ## 📝 Licença
 
