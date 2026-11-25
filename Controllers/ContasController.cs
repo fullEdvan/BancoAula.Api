@@ -41,4 +41,17 @@ public class ContasController : ControllerBase
     return CreatedAtAction(
         nameof(GetPorId), new { id = novaConta.Id }, novaConta);
   }
+
+  [HttpPut("{id:int}")]
+  public IActionResult Atualizar(int id, Conta dados)
+  {
+    var conta = _contas.FirstOrDefault(c => c.Id == id);
+    if (conta == null)
+      return NotFound();
+    conta.Tipo = dados.Tipo;
+    conta.Saldo = dados.Saldo;
+    conta.Ativa = dados.Ativa;
+
+    return NoContent();
+  }
 }
