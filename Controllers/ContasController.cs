@@ -54,4 +54,16 @@ public class ContasController : ControllerBase
 
     return NoContent();
   }
+
+  [HttpDelete("{id:int}")]
+  public IActionResult Remover(int id)
+  {
+    var conta = _contas.FirstOrDefault(c => c.Id == id);
+    
+    if (conta == null)
+      return NotFound();
+
+    _contas.Remove(conta);
+    return NoContent();
+  }
 }

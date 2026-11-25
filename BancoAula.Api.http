@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ### Atualizar conta 2 (deve retornar 204 No Content)
-PUT {{BancoAula.Api_HostAddress}}/api/contas/2
+PUT {{host}}/api/contas/2
 Content-Type: application/json
 
 {
@@ -31,3 +31,6 @@ Content-Type: application/json
   "saldo": 6000.00,
   "ativa": true
 }
+
+### Remover conta 1 (1ª chamada: 204 No Content | 2ª chamada: 404 Not Found)
+DELETE {{host}}/api/contas/1
