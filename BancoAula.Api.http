@@ -10,3 +10,14 @@ Accept: application/json
 ### Buscar conta inexistente (deve retornar 404 Not Found)
 GET {{host}}/api/contas/99
 Accept: application/json
+
+### Criar nova conta (deve retornar 201 Created)
+POST {{host}}/api/contas
+Content-Type: application/json
+
+{
+  "clienteId": 2,
+  "numero": 1003,
+  "tipo": "Corrente",
+  "saldo": 2500.00
+}

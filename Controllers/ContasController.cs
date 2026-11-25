@@ -31,4 +31,14 @@ public class ContasController : ControllerBase
 
     return Ok(conta);
   }
+
+  [HttpPost]
+  public ActionResult<Conta> Criar(Conta novaConta)
+  {
+    novaConta.Id = _proximoId++;
+    _contas.Add(novaConta);
+
+    return CreatedAtAction(
+        nameof(GetPorId), new { id = novaConta.Id }, novaConta);
+  }
 }
