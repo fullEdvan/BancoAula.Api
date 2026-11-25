@@ -3,3 +3,10 @@
 ### Verificar se a API está no ar
 GET {{host}}/api/contas
 
+### Buscar conta existente (deve retornar 200 OK)
+GET {{host}}/api/contas/1
+Accept: application/json
+
+### Buscar conta inexistente (deve retornar 404 Not Found)
+GET {{host}}/api/contas/99
+Accept: application/json

@@ -21,4 +21,14 @@ public class ContasController : ControllerBase
   {
     return Ok(_contas);
   }
+
+  [HttpGet("{id:int}")]
+  public ActionResult<Conta> GetPorId(int id)
+  {
+    var conta = _contas.FirstOrDefault(c => c.Id == id);
+    if (conta == null)
+      return NotFound();
+
+    return Ok(conta);
+  }
 }
