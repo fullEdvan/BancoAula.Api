@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using BancoAula.Api.Models;
 
 namespace BancoAula.Api.Controllers;
 
@@ -6,15 +7,18 @@ namespace BancoAula.Api.Controllers;
 [Route("api/[controller]")]
 public class ContasController : ControllerBase
 {
-  [HttpGet]
-  public IActionResult Get()
-  {
-    var contas = new[]
+  private static readonly List<Conta> _contas = new()
     {
-            new { Id = 1, Numero = 1001 },
-            new { Id = 2, Numero = 1002 }
-        };
+        new Conta { Id = 1, ClienteId = 1, Numero = 1001,
+                    Tipo = "Corrente", Saldo = 1500m },
+        new Conta { Id = 2, ClienteId = 1, Numero = 1002,
+                    Tipo = "Poupanca", Saldo = 5200m }
+    };
+  private static int _proximoId = 3;
 
-    return Ok(contas);
+  [HttpGet]
+  public ActionResult<IEnumerable<Conta>> GetTodas()
+  {
+    return Ok(_contas);
   }
 }
