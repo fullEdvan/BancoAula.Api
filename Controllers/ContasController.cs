@@ -17,9 +17,15 @@ public class ContasController : ControllerBase
   private static int _proximoId = 3;
 
   [HttpGet]
-  public ActionResult<IEnumerable<Conta>> GetTodas()
+  public ActionResult<List<Conta>> GetTodas([FromQuery] string? tipo)
   {
-    return Ok(_contas);
+    if (string.IsNullOrEmpty(tipo))
+      return Ok(_contas);
+
+    var contasFiltradas = _contas
+        .Where(c => c.Tipo.Equals(tipo, StringComparison.OrdinalIgnoreCase))
+        .ToList();
+    return Ok(contasFiltradas);
   }
 
   [HttpGet("{id:int}")]

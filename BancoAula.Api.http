@@ -45,3 +45,15 @@ Content-Type: application/json
   "tipo": "Corrente",
   "saldo": -1
 }
+
+### Listar todas as contas (sem filtro)
+GET {{host}}/api/contas
+Accept: application/json
+
+### Filtrar apenas contas Corrente
+GET {{host}}/api/contas?tipo=Corrente
+Accept: application/json
+
+### Filtrar apenas contas Poupanca
+GET {{host}}/api/contas?tipo=Poupanca
+Accept: application/json
