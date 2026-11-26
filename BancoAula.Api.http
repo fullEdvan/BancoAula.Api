@@ -57,3 +57,27 @@ Accept: application/json
 ### Filtrar apenas contas Poupanca
 GET {{host}}/api/contas?tipo=Poupanca
 Accept: application/json
+
+### Depósito com valor válido na conta 1 (deve retornar 200 OK com saldo atualizado)
+POST {{host}}/api/contas/1/depositos
+Content-Type: application/json
+
+{
+  "valor": 250
+}
+
+### Depósito com valor 0 (deve retornar 400 Bad Request)
+POST {{host}}/api/contas/1/depositos
+Content-Type: application/json
+
+{
+  "valor": 0
+}
+
+### Depósito em conta inexistente (deve retornar 404 Not Found)
+POST {{host}}/api/contas/99/depositos
+Content-Type: application/json
+
+{
+  "valor": 250
+}

@@ -48,6 +48,21 @@ public class ContasController : ControllerBase
         nameof(GetPorId), new { id = novaConta.Id }, novaConta);
   }
 
+  [HttpPost("{id:int}/depositos")]
+  public ActionResult<Conta> Depositar(int id, ValorDto valorDto)
+  {
+    if (valorDto.Valor <= 0)
+      return BadRequest("O valor do depósito deve ser maior que zero.");
+
+    var conta = _contas.FirstOrDefault(c => c.Id == id);
+
+    if (conta == null)
+      return NotFound();
+
+    conta.Saldo += valorDto.Valor;
+    return Ok(conta);
+  }
+
   [HttpPut("{id:int}")]
   public IActionResult Atualizar(int id, Conta dados)
   {
@@ -65,7 +80,7 @@ public class ContasController : ControllerBase
   public IActionResult Remover(int id)
   {
     var conta = _contas.FirstOrDefault(c => c.Id == id);
-    
+
     if (conta == null)
       return NotFound();
 
@@ -73,3 +88,5 @@ public class ContasController : ControllerBase
     return NoContent();
   }
 }
+
+public record ValorDto(decimal Valor);
